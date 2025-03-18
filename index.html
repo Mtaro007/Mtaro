@@ -46,9 +46,25 @@
             position: absolute;
             width: 30px;
             height: 30px;
-            background-image: url('https://example.com/flower.png'); /* Replace with your flower image URL */
-            background-size: cover;
-            animation: float 5s infinite;
+            background-color: pink;
+            border-radius: 50%;
+            animation: float 5s infinite, rise 10s infinite;
+        }
+        .flower::before, .flower::after {
+            content: '';
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-color: pink;
+            border-radius: 50%;
+        }
+        .flower::before {
+            top: -15px;
+            left: 0;
+        }
+        .flower::after {
+            top: 0;
+            left: -15px;
         }
         @keyframes float {
             0% {
@@ -59,6 +75,66 @@
             }
             100% {
                 transform: translateY(0);
+            }
+        }
+        @keyframes rise {
+            0% {
+                bottom: -30px;
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                bottom: 100vh;
+                opacity: 0;
+            }
+        }
+
+        /* Media Queries for responsive design */
+        @media (max-width: 768px) {
+            body {
+                padding: 20px;
+            }
+            .container {
+                width: 100%;
+                padding: 10px;
+            }
+            .btn {
+                width: 100%;
+                padding: 10px;
+                font-size: 16px;
+            }
+            .flower {
+                width: 20px;
+                height: 20px;
+            }
+            .flower::before, .flower::after {
+                width: 20px;
+                height: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                width: 100%;
+                padding: 5px;
+            }
+            .btn {
+                width: 100%;
+                padding: 5px;
+                font-size: 14px;
+            }
+            .flower {
+                width: 15px;
+                height: 15px;
+            }
+            .flower::before, .flower::after {
+                width: 15px;
+                height: 15px;
             }
         }
     </style>
@@ -119,7 +195,7 @@
                 let flower = document.createElement('div');
                 flower.className = 'flower';
                 flower.style.left = Math.random() * window.innerWidth + 'px';
-                flower.style.top = Math.random() * window.innerHeight + 'px';
+                flower.style.bottom = '-30px';
                 document.body.appendChild(flower);
             }
         }
