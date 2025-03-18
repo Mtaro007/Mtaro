@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Are You The One?</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            text-align: center;
+            background-color: #ffe6f2;
+            padding: 50px;
+            position: relative;
+            min-height: 100vh;
+            box-sizing: border-box;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .btn {
+            padding: 10px 20px;
+            margin: 10px;
+            border: none;
+            border-radius: 10px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .start {
+            background-color: #ff4d79;
+            color: white;
+        }
+        .flower-field {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            font-size: 50px; /* ขยายขนาดดอกไม้ */
+        }
+        .flower {
+            display: inline-block;
+            margin: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="page1">
+        <h1>ใช่เด็กอ้วงรึป่าวน้าาา💖</h1>
+        <button class="btn start" onclick="startProposal()">ใช่ค้าบ</button>
+    </div>
+
+    <div class="container" id="page2" style="display: none;">
+        <h1>เป็นแฟนกับพี่ไหมค้าบเด็กอ้วง💕</h1>
+        <button class="btn yes" onclick="alert('รักนะค้าบเด็กอ้วงง ❤️')">Yes💖</button>
+        <button class="btn no" id="noBtn">No🤔</button>
+    </div>
+
+    <div class="flower-field">
+        <div class="flower">🌸</div>
+        <div class="flower">🌼</div>
+        <div class="flower">🌷</div>
+        <div class="flower">🌻</div>
+        <div class="flower">🌺</div>
+        <div class="flower">🌹</div>
+        <div class="flower">🌸</div>
+        <div class="flower">🌼</div>
+        <div class="flower">🌷</div>
+        <div class="flower">🌻</div>
+        <div class="flower">🌺</div>
+        <div class="flower">🌹</div>
+    </div>
+    
+    <script>
+        function startProposal() {
+            document.getElementById("page1").style.display = "none";
+            document.getElementById("page2").style.display = "inline-block";
+        }
+
+        document.getElementById("noBtn").addEventListener("mouseover", function() {
+            let x = Math.random() * window.innerWidth * 0.6;
+            let y = Math.random() * window.innerHeight * 0.6;
+            this.style.position = "absolute";
+            this.style.left = x + "px";
+            this.style.top = y + "px";
+        });
+    </script>
+</body>
+</html>
