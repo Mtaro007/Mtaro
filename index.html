@@ -13,6 +13,8 @@
             position: relative;
             min-height: 100vh;
             box-sizing: border-box;
+            transition: background-color 0.5s;
+            overflow: hidden;
         }
         .container {
             background: white;
@@ -20,6 +22,7 @@
             border-radius: 15px;
             box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
             display: inline-block;
+            transition: transform 0.5s;
         }
         .btn {
             padding: 10px 20px;
@@ -32,17 +35,31 @@
             background-color: #ff4d79; 
             color: white;
         }
-        .flower-field {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            text-align: center;
-            font-size: 50px;
+        .btn:hover {
+            background-color: #ff1a66;
+            transform: scale(1.1);
+        }
+        .container h1 {
+            transition: color 0.5s;
         }
         .flower {
-            display: inline-block;
-            margin: 5px;
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background-image: url('https://example.com/flower.png'); /* Replace with your flower image URL */
+            background-size: cover;
+            animation: float 5s infinite;
+        }
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+            100% {
+                transform: translateY(0);
+            }
         }
     </style>
 </head>
@@ -59,34 +76,34 @@
 
     <div class="container" id="page3" style="display: none;">
         <h1>คบกับพี่ไหมค้าบเด็กอ้วง💕</h1>
-        <button class="btn yes" onclick="alert('รักนะค้าบเด็กอ้วงง ❤️')">Yes💖</button>
+        <button class="btn yes" onclick="showFinalPage()">Yes💖</button>
         <button class="btn no" id="noBtn">No🤔</button>
     </div>
 
-    <div class="flower-field">
-        <div class="flower">🌸</div>
-        <div class="flower">🌼</div>
-        <div class="flower">🌷</div>
-        <div class="flower">🌻</div>
-        <div class="flower">🌺</div>
-        <div class="flower">🌹</div>
-        <div class="flower">🌸</div>
-        <div class="flower">🌼</div>
-        <div class="flower">🌷</div>
-        <div class="flower">🌻</div>
-        <div class="flower">🌺</div>
-        <div class="flower">🌹</div>
+    <div class="container" id="page4" style="display: none;">
+        <h1>รักนะค้าบเด็กอ้วงง 💖</h1>
     </div>
     
     <script>
         function startProposal() {
             document.getElementById("page1").style.display = "none";
             document.getElementById("page2").style.display = "inline-block";
+            document.body.style.backgroundColor = "#ffccff";
+            createFlowers();
         }
 
         function nextPage() {
             document.getElementById("page2").style.display = "none";
             document.getElementById("page3").style.display = "inline-block";
+            document.body.style.backgroundColor = "#ff99cc";
+            createFlowers();
+        }
+
+        function showFinalPage() {
+            document.getElementById("page3").style.display = "none";
+            document.getElementById("page4").style.display = "inline-block";
+            document.body.style.backgroundColor = "#ff66b2";
+            createFlowers();
         }
 
         document.getElementById("noBtn").addEventListener("mouseover", function() {
@@ -96,6 +113,16 @@
             this.style.left = x + "px";
             this.style.top = y + "px";
         });
+
+        function createFlowers() {
+            for (let i = 0; i < 10; i++) {
+                let flower = document.createElement('div');
+                flower.className = 'flower';
+                flower.style.left = Math.random() * window.innerWidth + 'px';
+                flower.style.top = Math.random() * window.innerHeight + 'px';
+                document.body.appendChild(flower);
+            }
+        }
     </script>
 </body>
 </html>
