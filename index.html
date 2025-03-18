@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Are You The One?</title>
+    <title>ความลับ</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -29,9 +29,7 @@
             font-size: 18px;
             cursor: pointer;
             transition: 0.3s;
-        }
-        .start {
-            background-color: #ff4d79;
+            background-color: #ff4d79; /* Pink color */
             color: white;
         }
         .flower-field {
@@ -40,7 +38,7 @@
             left: 0;
             width: 100%;
             text-align: center;
-            font-size: 50px; /* ขยายขนาดดอกไม้ */
+            font-size: 50px;
         }
         .flower {
             display: inline-block;
@@ -55,7 +53,12 @@
     </div>
 
     <div class="container" id="page2" style="display: none;">
-        <h1>เป็นแฟนกับพี่ไหมค้าบเด็กอ้วง💕</h1>
+        <h1>ก่อนจะไปหน้าสุดท้ายพี่อยากจะบอกว่าพี่เป็นคนซื่อๆแล้วก็ไม่รู้หนูจะคิดยังไงเร็วไปไหมแต่เราก็คุยกันมาก็ 1 เดือน 16 วันแล้วค้าบพี่อยากจะบอกกับหนูว่า...</h1>
+        <button class="btn next" onclick="nextPage()">อะไรน้าาา🌼</button>
+    </div>
+
+    <div class="container" id="page3" style="display: none;">
+        <h1>เป็นคบกับพี่ไหมค้าบเด็กอ้วง💕</h1>
         <button class="btn yes" onclick="alert('รักนะค้าบเด็กอ้วงง ❤️')">Yes💖</button>
         <button class="btn no" id="noBtn">No🤔</button>
     </div>
@@ -79,6 +82,11 @@
         function startProposal() {
             document.getElementById("page1").style.display = "none";
             document.getElementById("page2").style.display = "inline-block";
+        }
+
+        function nextPage() {
+            document.getElementById("page2").style.display = "none";
+            document.getElementById("page3").style.display = "inline-block";
         }
 
         document.getElementById("noBtn").addEventListener("mouseover", function() {
